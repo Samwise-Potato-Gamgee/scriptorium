@@ -1,0 +1,44 @@
+<!-- Scriptorium single-page shell: navigation, view container, toasts and modals. -->
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Scriptorium — a local, offline ebook and audiobook library.">
+  <title>Scriptorium</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/static/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/static/css/app.css">
+  <script>
+    try {
+      const storedTheme = localStorage.getItem("scriptorium-theme");
+      const storedAccent = localStorage.getItem("scriptorium-accent");
+      document.documentElement.dataset.theme = storedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      if (storedAccent) document.documentElement.style.setProperty("--accent", storedAccent);
+    } catch (error) {}
+  </script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="/" data-link aria-label="Scriptorium home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M8 3v15"/></svg>
+        </span>
+        <span class="brand-name">Scriptorium</span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Main"></nav>
+      <div class="sidebar-foot">
+        <button class="btn btn-primary btn-add" id="add-button" type="button" aria-label="Add book" disabled></button>
+        <button class="theme-switch" id="theme-toggle" type="button" title="Switch theme"></button>
+      </div>
+    </aside>
+    <main class="main" id="main">
+      <div class="loading-screen"><span class="spinner"></span></div>
+    </main>
+  </div>
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+  <div class="modal-root" id="modal-root"></div>
+  <script type="module" src="/static/js/main.js"></script>
+</body>
+</html>

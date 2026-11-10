@@ -1,0 +1,13 @@
+name: scriptorium
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - tk
+  - pip
+  - pip:
+      - fastapi==0.162.0
+      - uvicorn==0.54.0
+      - mutagen==1.48.1
+      - Pillow==13.0.0
+      - pytest==9.1.1

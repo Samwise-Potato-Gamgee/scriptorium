@@ -1,0 +1,12 @@
+env/
+__pycache__/
+*.pyc
+.pytest_cache/
+.cache/
+.devdata/
+config.json
+AGENTS.md
+CONTEXT.md
+*.log
+.DS_Store
+Thumbs.db
